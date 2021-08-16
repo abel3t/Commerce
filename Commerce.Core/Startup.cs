@@ -1,12 +1,12 @@
-using System;
-using Commerce.Core.Repository;
+using Commerce.Domain;
+using Commerce.Domain.Interfaces;
+using Commerce.Domain.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using MongoDB.Driver;
 
 namespace Commerce.Core
 {
@@ -24,17 +24,9 @@ namespace Commerce.Core
         {
             services.AddControllers();
             
-            var mongoDbOptions = new MongoDbOptions()
-            {
-                ConnectionString = Environment.GetEnvironmentVariable("MONGO_CONNECTION_STRING"),
-                Database = Environment.GetEnvironmentVariable("MONGO_DBNAME")
-            };
-            
-            services.AddSingleton(mongoDbOptions);
-            services.AddSingleton<IMongoClient, MongoClient>(x => new MongoClient(mongoDbOptions.ConnectionString));
-            services.AddScoped<IMongoDbContext, MongoDbContext>();
-            services.AddScoped<IMongoUnitOfWork, MongoUnitOfWork>();  
-            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<IMongoContext, MongoContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddCors(options =>
             {
