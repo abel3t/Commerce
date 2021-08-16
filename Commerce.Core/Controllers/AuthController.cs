@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Commerce.Domain.Interfaces;
 using Commerce.Domain.Models;
-using Commerce.Domain.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
