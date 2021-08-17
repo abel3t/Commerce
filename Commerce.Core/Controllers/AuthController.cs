@@ -26,9 +26,9 @@ namespace Commerce.Core.Controllers
         [HttpPost]
         public async Task<Boolean> CreateNewUser()
         {
-            User user = new User("Heo con", "heocon@gmail.com", "1234567890");
+            User user = new User("Hihi", "hihi@gmail.com", "1234567890");
             
-            _userRepository.Add(user);
+            await _userRepository.AddAsync(user);
             
             await _uow.Commit();
             
@@ -37,9 +37,9 @@ namespace Commerce.Core.Controllers
         
         
         [HttpGet]
-        public Task<IEnumerable<User>> GetAllUsers()
+        public List<User> GetAllUsers()
         {
-            return _userRepository.GetAll();
+            return _userRepository.FindAll(1, 50);
         }
     }
 }
