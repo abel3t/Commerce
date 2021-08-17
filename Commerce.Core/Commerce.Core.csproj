@@ -6,6 +6,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Amazon.AspNetCore.Identity.Cognito" Version="3.0.0" />
+        <PackageReference Include="Amazon.Extensions.CognitoAuthentication" Version="2.2.2" />
+        <PackageReference Include="AWSSDK.CognitoIdentity" Version="3.7.0.52" />
+        <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.1.24" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.1" NoWarn="NU1605" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.1" NoWarn="NU1605" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
