@@ -9,6 +9,10 @@ namespace Commerce.Domain.Interfaces
 {
     public interface IRepository<T> : IDisposable where T : class
     {
+        void AddUow(T entity);
+        void UpdateUow(object id, T entity);
+        void RemoveUow(object id);
+        
         void InsertOne(T entity);
 
         void InsertMany(List<T> entities);
@@ -31,5 +35,7 @@ namespace Commerce.Domain.Interfaces
         Task<IEnumerable<T>> FindAllAsync();
         Task<IEnumerable<T>> FindAllWhereAsync(Expression<Func<T, bool>> where);
         Task<T> FindFirstWhereAsync(Expression<Func<T, bool>> where);
+
+        void FindOneAndDelete(object id);
     }
 }
